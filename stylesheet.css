@@ -140,3 +140,48 @@ span.highlight {
     display: inline-block;
     border-radius: 10px;
 }
+
+.project {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  column-gap: 18px;
+  align-items: start;
+  margin: 16px 0 24px;
+}
+
+.project-images {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+.project-images img {
+  width: 146px;
+  height: 110px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.project-info p {
+  margin-top: 0;
+}
+
+.project-description {
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .project {
+    display: block;
+  }
+
+  .project-images {
+    margin-bottom: 10px;
+  }
+
+  .project-images img {
+    width: calc(50% - 4px);
+    height: 110px;
+  }
+}
