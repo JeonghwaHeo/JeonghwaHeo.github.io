@@ -1,3 +1,24 @@
+:root {
+  color-scheme: light dark;
+  --background: #ffffff;
+  --text: #222222;
+  --link: #1772d0;
+  --link-hover: #f09228;
+  --button-background: #ffffff;
+  --button-border: #c9c9c9;
+  --button-text: #222222;
+}
+
+:root[data-theme="dark"] {
+  --background: #1f1f1f;
+  --text: #e7e7e7;
+  --link: #7ab7ff;
+  --link-hover: #ffb15e;
+  --button-background: #252525;
+  --button-border: #555555;
+  --button-text: #f0f0f0;
+}
+
 /* latin-ext */
 @font-face {
   font-family: 'Lato';
@@ -64,13 +85,13 @@
 }
 
 a {
-  color: #1772d0;
+  color: var(--link);
   text-decoration: none;
 }
 
 a:focus,
 a:hover {
-  color: #f09228;
+  color: var(--link-hover);
   text-decoration: none;
 }
 
@@ -82,6 +103,40 @@ p,
 a {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
+  color: var(--text);
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  transition: background-color .15s ease, color .15s ease;
+}
+
+a {
+  color: var(--link);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--button-border);
+  border-radius: 50%;
+  background: var(--button-background);
+  color: var(--button-text);
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  border-color: var(--link-hover);
 }
 
 strong {
@@ -141,9 +196,30 @@ span.highlight {
     border-radius: 10px;
 }
 
+.education-item,
+.experience-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.education-item img,
+.experience-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.education-item p,
+.experience-item p {
+  margin: 0;
+}
+
 .project {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 300px minmax(0, 1fr);
   column-gap: 18px;
   align-items: start;
   margin: 16px 0 24px;
@@ -155,7 +231,8 @@ span.highlight {
   margin: 0;
 }
 
-.project-images img {
+.project-images img,
+.project-images video {
   width: 146px;
   height: 110px;
   aspect-ratio: 4 / 3;
@@ -171,7 +248,7 @@ span.highlight {
   margin-top: 4px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   .project {
     display: block;
   }
@@ -180,7 +257,8 @@ span.highlight {
     margin-bottom: 10px;
   }
 
-  .project-images img {
+  .project-images img,
+  .project-images video {
     width: calc(50% - 4px);
     height: 110px;
   }
